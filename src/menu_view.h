@@ -8,7 +8,7 @@
 
 class MenuView : public View {
  public:
-  MenuView(int x, int y);
+  MenuView(int x, int y, int width, int height);
 
   void add_item(const std::string &item);
   int selected() const;

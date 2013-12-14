@@ -35,7 +35,7 @@ bool MainMenuController::handle_event(const tb_event &event) {
 }
 
 void MainMenuController::on_enter_() {
-  MenuView *menu = new MenuView(1, 1);
+  MenuView *menu = new MenuView(1, 1, 10, 23);
   menu->add_item("Play");
   menu->add_item("Quit");
   views_.push_back(menu);

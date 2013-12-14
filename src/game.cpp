@@ -13,6 +13,9 @@ bool Game::running() const {
 
 void Game::start() {
   entities_->destroy_all();
+
+  player_ = entities_->create();
+
   dungeon_.generate(1, 100, 100);
 }
 

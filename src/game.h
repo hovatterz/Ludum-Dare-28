@@ -14,6 +14,8 @@ class Game {
   void quit();
 
   Dungeon *dungeon();
+  entityx::Entity player();
+
   entityx::ptr<entityx::EventManager> events();
   entityx::ptr<entityx::EntityManager> entities();
   entityx::ptr<entityx::SystemManager> systems();
@@ -21,6 +23,7 @@ class Game {
  private:
   bool running_;
   Dungeon dungeon_;
+  entityx::Entity player_;
   entityx::ptr<entityx::EventManager> events_;
   entityx::ptr<entityx::EntityManager> entities_;
   entityx::ptr<entityx::SystemManager> systems_;

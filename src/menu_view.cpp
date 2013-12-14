@@ -4,7 +4,10 @@
 
 #include "menu_view.h"
 
-MenuView::MenuView(int x, int y) : View(x, y), selected_index_(0) {}
+MenuView::MenuView(int x, int y, int width, int height)
+  : View(x, y, width, height),
+    selected_index_(0) {
+    }
 
 void MenuView::add_item(const std::string &item) {
   items_.push_back(item);
@@ -31,7 +34,7 @@ void MenuView::render() {
       bg = TB_RED;
     }
 
-    tb_fill(x_, y_ + i, 10, 1, ' ', fg, bg);
+    tb_fill(x_, y_ + i, width_, 1, ' ', fg, bg);
     tb_draw_string(x_ + 1, y_ + i, item, fg, bg);
     ++i;
   }

@@ -2,8 +2,8 @@
 #define LD28_PLAYING_CONTROLLER_H_
 
 #include "controller.h"
-
 #include "game.h"
+#include "game_view.h"
 
 class PlayingController : public Controller {
  public:
@@ -13,6 +13,7 @@ class PlayingController : public Controller {
 
  private:
   Game *game_;
+  GameView *game_view_;
 
   void on_enter_();
 };
