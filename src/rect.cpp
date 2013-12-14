@@ -4,6 +4,11 @@ Rect::Rect(int left, int top, int width, int height) {
   this->set(left, top, width, height);
 }
 
+Rect Rect::padded(int padding) {
+  return Rect(left_ - padding, top_ - padding,
+              width_ + padding * 2, height_ + padding * 2);
+}
+
 int Rect::left() const {
   return left_;
 }
@@ -40,6 +45,6 @@ void Rect::set(int left, int top, int width, int height) {
   width_ = width;
   height_ = height;
 
-  center_x_ = (left + width_) * 0.5f;
-  center_y_ = (top + height_) * 0.5f;
+  center_x_ = left + width_ * 0.5f;
+  center_y_ = top + height_ * 0.5f;
 }

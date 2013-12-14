@@ -29,6 +29,7 @@ $(TARGET): $(OBJDIR) $(OBJS)
 
 clean:
 	rm -rf $(OBJDIR)
+	rm -rf $(OUTPUT).dSYM
 	rm -f $(OUTPUT)
 
 run:

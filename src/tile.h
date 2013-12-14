@@ -3,9 +3,15 @@
 
 #include <cstdint>
 
+typedef enum {
+  kTileUnknown,
+  kTileFloor,
+  kTileWall
+} TileType;
+
 class Tile {
  public:
-  Tile();
+  Tile(TileType type);
 
   bool passable() const;
   void set_passable(bool passable);
@@ -19,10 +25,14 @@ class Tile {
   uint16_t background() const;
   void set_background(uint16_t background);
 
+  TileType type() const;
+  void set_type(TileType type);
+
  private:
   bool passable_;
   char symbol_;
   uint16_t foreground_, background_;
+  TileType type_;
 };
 
 #endif  // LD28_TILE_H_

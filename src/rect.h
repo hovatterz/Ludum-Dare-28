@@ -5,6 +5,8 @@ class Rect {
  public:
   Rect(int left, int top, int width, int height);
 
+  Rect padded(int padding);
+
   int left() const;
   int top() const;
   int width() const;
