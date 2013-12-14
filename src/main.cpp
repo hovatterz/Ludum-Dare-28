@@ -1,10 +1,17 @@
 #include <iostream>
+#include <list>
 
 #include <entityx/entityx.h>
 #include <termbox.h>
 
+#include "controller.h"
+#include "controller_stack.h"
 #include "debug_receiver.h"
+#include "game.h"
 #include "termbox_helpers.h"
+
+#include "menu_view.h"
+#include "main_menu_controller.h"
 
 int main() {
   int tb_ret = tb_init();
@@ -22,19 +29,30 @@ int main() {
   auto debug_receiver = DebugReceiver::make();
   debug_receiver->configure(events);
 
-  bool running = true;
-  while (running) {
+  Game game;
+
+  ControllerStack controller_stack;
+  controller_stack.push(new MainMenuController(&game));
+
+  while (game.running()) {
+    auto &controllers = controller_stack.controllers();
+
     struct tb_event event;
     if (tb_peek_event(&event, 0)) {
       if (event.type == TB_EVENT_KEY) {
-        char input = static_cast<char>(event.ch);
-        if (input == 'q') {
-          running = false;
+        auto iter = controllers.rbegin();
+        for (; iter != controllers.rend(); ++iter) {
+          if ((*iter)->handle_event(event) == false) {
+            break;
+          }
         }
       }
     }
 
     tb_clear();
+    for (auto controller : controllers) {
+      controller->display();
+    }
     tb_present();
   }
 
