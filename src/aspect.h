@@ -1,6 +1,8 @@
 #ifndef LD28_ASPECT_H_
 #define LD28_ASPECT_H_
 
+#include <cstdint>
+
 #include <termbox.h>
 
 #include <entityx/entityx.h>

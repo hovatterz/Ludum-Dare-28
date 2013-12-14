@@ -1,6 +1,8 @@
 #ifndef LD28_TILE_H_
 #define LD28_TILE_H_
 
+#include <cstdint>
+
 class Tile {
  public:
   Tile();
