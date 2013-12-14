@@ -38,6 +38,5 @@ void MainMenuController::on_enter_() {
   MenuView *menu = new MenuView(1, 1);
   menu->add_item("Play");
   menu->add_item("Quit");
-
   views_.push_back(menu);
 }

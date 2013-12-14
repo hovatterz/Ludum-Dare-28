@@ -7,15 +7,14 @@
 
 class PlayingController : public Controller {
  public:
-  PlayingController(Game *game) : game_(game) { }
+  PlayingController(Game *game);
 
-  bool handle_event(const tb_event &event) {
-    game_->quit();
-    return false;
-  }
+  bool handle_event(const tb_event &event);
 
  private:
   Game *game_;
+
+  void on_enter_();
 };
 
 #endif  // LD28_PLAYING_CONTROLLER_H_
