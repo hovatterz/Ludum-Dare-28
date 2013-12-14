@@ -22,14 +22,10 @@ int main() {
 
   tb_set_clear_attributes(TB_WHITE, TB_BLACK);
 
-  auto events = entityx::EventManager::make();
-  auto entities = entityx::EntityManager::make(events);
-  auto systems = entityx::SystemManager::make(entities, events);
+  Game game;
 
   auto debug_receiver = DebugReceiver::make();
-  debug_receiver->configure(events);
-
-  Game game;
+  debug_receiver->configure(game.events());
 
   ControllerStack controller_stack;
   controller_stack.push(new MainMenuController(&game));
