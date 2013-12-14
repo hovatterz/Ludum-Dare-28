@@ -17,10 +17,10 @@ void Level::generate(int width, int height) {
       int random = rand_range(0, 1);
       if (random == 0) {
         tile.set_symbol('#');
-        tile.set_foreground(TB_WHITE);
+        tile.set_foreground(TB_YELLOW);
       } else {
         tile.set_symbol('.');
-        tile.set_foreground(TB_BLUE);
+        tile.set_foreground(TB_WHITE);
       }
     }
   }
