@@ -1,6 +1,9 @@
 #include <iostream>
 #include <termbox.h>
 
+#include "aspect.h"
+#include "spatial.h"
+
 #include "game_view.h"
 
 GameView::GameView(int x, int y, int width, int height, Game *game)
@@ -38,5 +41,12 @@ void GameView::render() {
 
     ++i;
     j = 0;
+  }
+
+  for (auto entity : game_->entities()->entities_with_components<Aspect, Spatial>()) {
+    auto spatial = entity.component<Spatial>();
+    auto aspect = entity.component<Aspect>();
+    tb_change_cell(spatial->x() - low_x, spatial->y() - low_y,
+                   aspect->symbol(), aspect->foreground(), aspect->background());
   }
 }

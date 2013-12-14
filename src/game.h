@@ -4,6 +4,7 @@
 #include <entityx/entityx.h>
 
 #include "dungeon.h"
+#include "entity_factory.h"
 
 class Game {
  public:
@@ -14,6 +15,7 @@ class Game {
   void quit();
 
   Dungeon *dungeon();
+  EntityFactory *entity_factory();
   entityx::Entity player();
 
   entityx::ptr<entityx::EventManager> events();
@@ -22,11 +24,14 @@ class Game {
 
  private:
   bool running_;
-  Dungeon dungeon_;
-  entityx::Entity player_;
+
   entityx::ptr<entityx::EventManager> events_;
   entityx::ptr<entityx::EntityManager> entities_;
   entityx::ptr<entityx::SystemManager> systems_;
+
+  Dungeon dungeon_;
+  entityx::Entity player_;
+  EntityFactory entity_factory_;
 };
 
 #endif  // LD28_GAME_H_
