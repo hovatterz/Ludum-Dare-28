@@ -16,6 +16,8 @@ bool PlayingController::handle_event(const tb_event &event) {
 }
 
 void PlayingController::on_enter_() {
-  GameView *game_view = new GameView(1, 1);
+  game_->start();
+
+  GameView *game_view = new GameView(1, 1, game_);
   views_.push_back(game_view);
 }
