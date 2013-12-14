@@ -1,3 +1,5 @@
+#include <termbox.h>
+
 #include "rng.h"
 
 #include "level.h"
@@ -15,8 +17,10 @@ void Level::generate(int width, int height) {
       int random = rand_range(0, 1);
       if (random == 0) {
         tile.set_symbol('#');
+        tile.set_foreground(TB_WHITE);
       } else {
         tile.set_symbol('.');
+        tile.set_foreground(TB_BLUE);
       }
     }
   }

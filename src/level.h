@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "rect.h"
 #include "tile.h"
 
 class Level {
