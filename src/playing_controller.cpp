@@ -30,6 +30,22 @@ bool PlayingController::handle_event(const tb_event &event) {
     ++cx;
     game_->player().component<Spatial>()->offset_position(1, 0);
     game_view_->set_center(cx, cy);
+  } else if (input == 'y') {
+    --cx; --cy;
+    game_->player().component<Spatial>()->offset_position(-1, -1);
+    game_view_->set_center(cx, cy);
+  } else if (input == 'u') {
+    ++cx; --cy;
+    game_->player().component<Spatial>()->offset_position(1, -1);
+    game_view_->set_center(cx, cy);
+  } else if (input == 'b') {
+    --cx; ++cy;
+    game_->player().component<Spatial>()->offset_position(-1, 1);
+    game_view_->set_center(cx, cy);
+  } else if (input == 'n') {
+    ++cx; ++cy;
+    game_->player().component<Spatial>()->offset_position(1, 1);
+    game_view_->set_center(cx, cy);
   }
 
   return false;
