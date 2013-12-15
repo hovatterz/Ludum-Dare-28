@@ -5,9 +5,12 @@
 
 class HUDView : public View {
  public:
-  HUDView(int x, int y, int width, int height);
+  HUDView(int x, int y, int width, int height, Game *game);
 
   void render();
+
+ private:
+  Game *game_;
 };
 
 #endif  // LD28_HUD_VIEW_H_
