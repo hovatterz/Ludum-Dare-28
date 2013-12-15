@@ -8,6 +8,8 @@
 #include "main_menu_controller.h"
 
 int main() {
+  std::srand(std::time(nullptr));
+
   int tb_ret = tb_init();
   if (tb_ret != 0) {
     std::cerr << "Failed to initialize termbox (" << tb_ret << ")" << std::endl;
