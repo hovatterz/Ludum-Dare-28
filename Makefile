@@ -5,7 +5,7 @@ SRCDIR=src
 OBJDIR=obj
 
 CXXFLAGS=-g -MMD -Wall -Werror -std=c++11 -stdlib=libc++
-LDFLAGS=-lentityx -ltermbox
+LDFLAGS=-lentityx -ltermbox -llua
 
 SRCS=$(wildcard $(SRCDIR)/*.cpp)
 OBJS=$(subst $(SRCDIR),$(OBJDIR),$(subst .cpp,.o,$(SRCS)))
