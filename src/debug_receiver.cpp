@@ -7,6 +7,13 @@ entityx::ptr<DebugReceiver> DebugReceiver::make() {
 }
 
 void DebugReceiver::configure(entityx::ptr<entityx::EventManager> events) {
+  events->subscribe<AttackEvent>(*this);
+}
+
+void DebugReceiver::receive(const AttackEvent &event) {
+  this->Log("Entity " + std::to_string(event.attacker->id().id())
+            + " attacks entity " + std::to_string(event.target->id().id())
+            + " for " + std::to_string(event.damage) + " damage.");
 }
 
 void DebugReceiver::Log(const std::string &message) {

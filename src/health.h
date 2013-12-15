@@ -13,6 +13,8 @@ class Health : public entityx::Component<Health> {
 
   int health() const;
   int max_health() const;
+  bool dead() const;
+  void offset(int offset);
 
  private:
   int health_, max_health_;

@@ -13,3 +13,11 @@ int Health::health() const {
 int Health::max_health() const {
   return max_health_;
 }
+
+bool Health::dead() const {
+  return health_ <= 0;
+}
+
+void Health::offset(int offset) {
+  health_ += offset;
+}
