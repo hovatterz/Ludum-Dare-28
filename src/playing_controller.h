@@ -4,6 +4,7 @@
 #include "controller.h"
 #include "game.h"
 #include "game_view.h"
+#include "hud_view.h"
 
 class PlayingController : public Controller {
  public:
@@ -16,6 +17,7 @@ class PlayingController : public Controller {
   bool waiting_for_player_;
   Game *game_;
   GameView *game_view_;
+  HUDView *hud_view_;
 
   void on_enter_();
 };

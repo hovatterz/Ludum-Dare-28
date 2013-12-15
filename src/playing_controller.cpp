@@ -55,4 +55,7 @@ void PlayingController::on_enter_() {
 
   game_view_ = new GameView(0, 0, 50, 20, game_);
   views_.push_back(game_view_);
+
+  hud_view_ = new HUDView(50, 0, 30, 20);
+  views_.push_back(hud_view_);
 }
