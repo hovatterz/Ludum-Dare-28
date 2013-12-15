@@ -3,6 +3,7 @@
 
 #include "controller.h"
 #include "game.h"
+#include "announcements_view.h"
 #include "game_view.h"
 #include "hud_view.h"
 
@@ -16,6 +17,7 @@ class PlayingController : public Controller {
  private:
   bool waiting_for_player_;
   Game *game_;
+  AnnouncementsView *announcements_view_;
   GameView *game_view_;
   HUDView *hud_view_;
 

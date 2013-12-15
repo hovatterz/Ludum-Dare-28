@@ -8,8 +8,6 @@ class HUDView : public View {
   HUDView(int x, int y, int width, int height);
 
   void render();
-
- private:
 };
 
 #endif  // LD28_HUD_VIEW_H_
