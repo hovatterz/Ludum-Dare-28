@@ -44,6 +44,7 @@ void GameView::render() {
   }
 
   for (auto entity : game_->entities()->entities_with_components<Aspect, Spatial>()) {
+    if (entity.valid() == false) { continue; }
     auto spatial = entity.component<Spatial>();
     if (spatial->x() >= low_x && spatial->y() >= low_y &&
         spatial->x() < high_x && spatial->y() < high_y) {

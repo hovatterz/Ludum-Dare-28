@@ -31,6 +31,7 @@ void MovementSystem::update(entityx::ptr<entityx::EntityManager> entities,
                             entityx::ptr<entityx::EventManager> events,
                             double delta) {
   for (auto entity : entities->entities_with_components<TurnTaker, Spatial>()) {
+    if (entity.valid() == false) { continue; }
     auto turn_taker = entity.component<TurnTaker>();
     Action action = turn_taker->action();
     if (action != kActionMoveNorth &&
@@ -58,6 +59,8 @@ void MovementSystem::update(entityx::ptr<entityx::EntityManager> entities,
 
     bool attacked_something = false;
     for (auto other : entities->entities_with_components<Health, Spatial>()) {
+      if (other.valid() == false) { continue; }
+
       auto other_spatial = other.component<Spatial>();
       if (other_spatial->x() == new_x && other_spatial->y() == new_y) {
         auto faction_member = entity.component<FactionMember>();

@@ -13,6 +13,7 @@ HUDView::HUDView(int x, int y, int width, int height, Game *game)
 
 void HUDView::render() {
   entityx::Entity player = game_->player();
+  if (player.valid() == false) { return; }
   auto health = player.component<Health>();
 
   tb_fill(x_, y_, 1, height_, '|');

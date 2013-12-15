@@ -1,5 +1,7 @@
 #include <termbox.h>
 
+#include "controller_stack.h"
+#include "main_menu_controller.h"
 #include "spatial.h"
 #include "turn_taker.h"
 
@@ -17,8 +19,13 @@ void PlayingController::update() {
 
     game_->step();
 
-    auto player_spatial = game_->player().component<Spatial>();
-    game_view_->set_center(player_spatial->x(), player_spatial->y());
+    entityx::Entity player = game_->player();;
+    if (player.valid() == false) {
+      controller_stack_->change(new MainMenuController(game_));
+    } else {
+      auto player_spatial = player.component<Spatial>();
+      game_view_->set_center(player_spatial->x(), player_spatial->y());
+    }
   }
 }
 
