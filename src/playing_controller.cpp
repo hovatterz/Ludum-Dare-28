@@ -1,6 +1,7 @@
 #include <termbox.h>
 
 #include "controller_stack.h"
+#include "field_of_view.h"
 #include "main_menu_controller.h"
 #include "script.h"
 #include "spatial.h"
@@ -24,8 +25,11 @@ void PlayingController::update() {
     if (player.valid() == false) {
       controller_stack_->change(new MainMenuController(game_));
     } else {
-      auto player_spatial = player.component<Spatial>();
-      game_view_->set_center(player_spatial->x(), player_spatial->y());
+      auto fov = player.component<FieldOfView>();
+      auto spatial = player.component<Spatial>();
+
+      fov->calculate(game_->dungeon(), spatial->x(), spatial->y());
+      game_view_->set_center(spatial->x(), spatial->y());
     }
   }
 }

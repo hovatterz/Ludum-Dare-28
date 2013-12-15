@@ -2,6 +2,7 @@
 #include <termbox.h>
 
 #include "aspect.h"
+#include "field_of_view.h"
 #include "spatial.h"
 
 #include "game_view.h"
@@ -25,6 +26,7 @@ void GameView::render() {
   int high_y = center_y_ + height_ * 0.5f;
 
   Dungeon *dungeon = game_->dungeon();
+  auto fov = game_->player().component<FieldOfView>();
 
   int i = 0, j = 0;
   for (int x = low_x; x < high_x; ++x) {
@@ -35,7 +37,9 @@ void GameView::render() {
         continue;
       }
 
-      tb_change_cell(i, j, tile->symbol(), tile->foreground(), tile->background());
+      if (fov->visible(x, y) == true) {
+        tb_change_cell(i, j, tile->symbol(), tile->foreground(), tile->background());
+      }
       ++j;
     }
 
@@ -48,9 +52,11 @@ void GameView::render() {
     auto spatial = entity.component<Spatial>();
     if (spatial->x() >= low_x && spatial->y() >= low_y &&
         spatial->x() < high_x && spatial->y() < high_y) {
-      auto aspect = entity.component<Aspect>();
-      tb_change_cell(spatial->x() - low_x, spatial->y() - low_y,
-                     aspect->symbol(), aspect->foreground(), aspect->background());
+      if (fov->visible(spatial->x(), spatial->y()) == true) {
+        auto aspect = entity.component<Aspect>();
+        tb_change_cell(spatial->x() - low_x, spatial->y() - low_y,
+                       aspect->symbol(), aspect->foreground(), aspect->background());
+      }
     }
   }
 }

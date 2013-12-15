@@ -1,6 +1,7 @@
 #include "aspect.h"
 #include "descriptor.h"
 #include "faction_member.h"
+#include "field_of_view.h"
 #include "health.h"
 #include "script.h"
 #include "spatial.h"
@@ -21,6 +22,7 @@ entityx::Entity EntityFactory::create_player() {
   player.assign<Health>(Health::make(Dice(1, 8)));
   player.assign<FactionMember>(FactionMember::make(kFactionPlayer));
   player.assign<Descriptor>(Descriptor::make("Player"));
+  player.assign<FieldOfView>(FieldOfView::make(10));
   return player;
 }
 

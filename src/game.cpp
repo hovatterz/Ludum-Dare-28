@@ -1,3 +1,4 @@
+#include "field_of_view.h"
 #include "movement_system.h"
 #include "turn_system.h"
 #include "rng.h"
@@ -31,6 +32,7 @@ void Game::start() {
     int pos_y = rand_range(0, 100 - 1);
     if (dungeon_.tile_at(pos_x, pos_y)->passable() == true) {
       player_.component<Spatial>()->set_position(pos_x, pos_y);
+      player_.component<FieldOfView>()->calculate(&dungeon_, pos_x, pos_y);
       player_placed = true;
     }
   }
