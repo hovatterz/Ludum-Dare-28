@@ -1,16 +1,10 @@
 #include <iostream>
-#include <list>
 
-#include <entityx/entityx.h>
 #include <termbox.h>
 
-#include "controller.h"
 #include "controller_stack.h"
 #include "debug_receiver.h"
 #include "game.h"
-#include "termbox_helpers.h"
-
-#include "menu_view.h"
 #include "main_menu_controller.h"
 
 int main() {
