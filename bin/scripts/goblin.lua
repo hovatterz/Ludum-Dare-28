@@ -1,3 +1,4 @@
+-- goblin.lua
 local move_directions = {}
 move_directions[0] = { action=action.move_north, x=0, y=-1 }
 move_directions[1] = { action=action.move_south, x=0, y=1 }
