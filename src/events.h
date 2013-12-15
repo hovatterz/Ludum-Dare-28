@@ -4,11 +4,11 @@
 #include <entityx/entityx.h>
 
 struct AttackEvent : public entityx::Event<AttackEvent> {
-  AttackEvent(entityx::Entity *attacker, entityx::Entity *target, int damage) : attacker(attacker), target(target), damage(damage) {
+  AttackEvent(entityx::Entity *attacker, entityx::Entity *defender, int damage) : attacker(attacker), defender(defender), damage(damage) {
   }
 
   entityx::Entity *attacker;
-  entityx::Entity *target;
+  entityx::Entity *defender;
   int damage;
 };
 

@@ -1,4 +1,5 @@
 #include "aspect.h"
+#include "descriptor.h"
 #include "faction_member.h"
 #include "health.h"
 #include "script.h"
@@ -18,6 +19,7 @@ entityx::Entity EntityFactory::create_player() {
   player.assign<TurnTaker>(TurnTaker::make());
   player.assign<Health>(Health::make(Dice(1, 8)));
   player.assign<FactionMember>(FactionMember::make(kFactionPlayer));
+  player.assign<Descriptor>(Descriptor::make("Player"));
   return player;
 }
 
@@ -29,5 +31,6 @@ entityx::Entity EntityFactory::create_goblin() {
   goblin.assign<TurnTaker>(TurnTaker::make());
   goblin.assign<Health>(Health::make(Dice(1, 6)));
   goblin.assign<FactionMember>(FactionMember::make(kFactionEverythingElse));
+  goblin.assign<Descriptor>(Descriptor::make("Goblin"));
   return goblin;
 }

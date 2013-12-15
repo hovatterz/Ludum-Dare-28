@@ -1,3 +1,5 @@
+#include "descriptor.h"
+
 #include "announcements_receiver.h"
 
 void AnnouncementsReceiver::configure(entityx::ptr<entityx::EventManager> events) {
@@ -14,8 +16,23 @@ void AnnouncementsReceiver::add_announcement(const std::string &message) {
 
 // Event handlers
 void AnnouncementsReceiver::receive(const AttackEvent &event) {
+  auto attacker = event.attacker->component<Descriptor>();
+  std::string attacker_name;
+  if (attacker == nullptr) {
+    attacker_name = std::to_string(event.attacker->id().id());
+  } else {
+    attacker_name = attacker->name();
+  }
+
+  auto defender = event.defender->component<Descriptor>();
+  std::string defender_name;
+  if (defender == nullptr) {
+    defender_name = std::to_string(event.defender->id().id());
+  } else {
+    defender_name = defender->name();
+  }
+
   announcements_.push_back(
-      "Entity " + std::to_string(event.attacker->id().id())
-      + " attacks entity " + std::to_string(event.target->id().id())
+      attacker_name + " attacks " + defender_name
       + " for " + std::to_string(event.damage) + " damage.");
 }
