@@ -22,4 +22,4 @@ This game requires a few libraries to build.
 - [termbox](https://github.com/nsf/termbox)
 
 After they are installed, you should just be able to run `make`. The game
-builds to the `bin` directory.
+builds to the `bin` directory. It relies on C++11 features.
