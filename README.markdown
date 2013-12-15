@@ -1,7 +1,8 @@
 # LD28 Entry
 
 The theme for this entry is "You Only Get One". I decided to make a
-roguelike since you only get one life.
+roguelike since you only get one life. This project was for the 48 hour
+compo.
 
 ## Controls
 
