@@ -5,7 +5,18 @@
 
 #include "playing_controller.h"
 
-PlayingController::PlayingController(Game *game) : game_(game) {}
+PlayingController::PlayingController(Game *game)
+  : waiting_for_player_(true),
+    game_(game) {
+}
+
+
+void PlayingController::update() {
+  if (waiting_for_player_ == false) {
+    game_->step();
+    waiting_for_player_ = true;
+  }
+}
 
 static int cx = 0;
 static int cy = 0;
@@ -48,6 +59,7 @@ bool PlayingController::handle_event(const tb_event &event) {
     game_view_->set_center(cx, cy);
   }
 
+  waiting_for_player_ = false;
   return false;
 }
 

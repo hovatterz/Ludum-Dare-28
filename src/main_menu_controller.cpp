@@ -9,6 +9,9 @@
 
 MainMenuController::MainMenuController(Game *game) : game_(game) {}
 
+void MainMenuController::update() {
+}
+
 bool MainMenuController::handle_event(const tb_event &event) {
   MenuView *menu = static_cast<MenuView *>(views_.back());
 

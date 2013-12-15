@@ -8,6 +8,7 @@ class MainMenuController : public Controller {
  public:
   MainMenuController(Game *game);
 
+  void update();
   bool handle_event(const tb_event &event);
 
  private:

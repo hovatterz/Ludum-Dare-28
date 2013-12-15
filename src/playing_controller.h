@@ -9,9 +9,11 @@ class PlayingController : public Controller {
  public:
   PlayingController(Game *game);
 
+  void update();
   bool handle_event(const tb_event &event);
 
  private:
+  bool waiting_for_player_;
   Game *game_;
   GameView *game_view_;
 

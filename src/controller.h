@@ -14,6 +14,7 @@ class Controller {
   Controller();
   virtual ~Controller();
 
+  virtual void update() = 0;
   virtual bool handle_event(const tb_event &event) = 0;
   void display();
 
