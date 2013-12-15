@@ -73,6 +73,7 @@ void MovementSystem::update(entityx::ptr<entityx::EntityManager> entities,
 
           events->emit<AttackEvent>(&entity, &other, damage);
           if (other_health->dead() == true) {
+            events->emit<DeathEvent>(&other);
             other.destroy();
           }
 

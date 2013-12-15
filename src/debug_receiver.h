@@ -12,6 +12,7 @@ class DebugReceiver : public entityx::Receiver<DebugReceiver> {
   void configure(entityx::ptr<entityx::EventManager> events);
 
   void receive(const AttackEvent &event);
+  void receive(const DeathEvent &event);
 
  private:
   void Log(const std::string &message);

@@ -4,6 +4,7 @@
 
 void AnnouncementsReceiver::configure(entityx::ptr<entityx::EventManager> events) {
   events->subscribe<AttackEvent>(*this);
+  events->subscribe<DeathEvent>(*this);
 }
 
 const std::vector<std::string> AnnouncementsReceiver::announcements() const {
@@ -35,4 +36,16 @@ void AnnouncementsReceiver::receive(const AttackEvent &event) {
   announcements_.push_back(
       attacker_name + " attacks " + defender_name
       + " for " + std::to_string(event.damage) + " damage.");
+}
+
+void AnnouncementsReceiver::receive(const DeathEvent &event) {
+  auto descriptor = event.entity->component<Descriptor>();
+  std::string name;
+  if (descriptor == nullptr) {
+    name = std::to_string(event.entity->id().id());
+  } else {
+    name = descriptor->name();
+  }
+
+  announcements_.push_back(name + " dies!");
 }

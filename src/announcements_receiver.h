@@ -17,6 +17,7 @@ class AnnouncementsReceiver : public entityx::Receiver<AnnouncementsReceiver> {
 
   // Event handlers
   void receive(const AttackEvent &event);
+  void receive(const DeathEvent &event);
 
  private:
   std::vector<std::string> announcements_;

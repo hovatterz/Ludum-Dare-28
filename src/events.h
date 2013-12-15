@@ -12,4 +12,10 @@ struct AttackEvent : public entityx::Event<AttackEvent> {
   int damage;
 };
 
+struct DeathEvent : public entityx::Event<DeathEvent> {
+  DeathEvent(entityx::Entity *entity) : entity(entity) {}
+
+  entityx::Entity *entity;
+};
+
 #endif  // LD28_EVENTS_H_

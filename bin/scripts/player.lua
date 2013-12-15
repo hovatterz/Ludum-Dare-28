@@ -10,6 +10,7 @@ keymap["y"] = function() return move(ld28.move_directions[4]) end
 keymap["u"] = function() return move(ld28.move_directions[5]) end
 keymap["b"] = function() return move(ld28.move_directions[6]) end
 keymap["n"] = function() return move(ld28.move_directions[7]) end
+keymap["."] = function() return true end
 
 function move(direction)
     if ld28.can_move(dungeon, spatial, direction) then
