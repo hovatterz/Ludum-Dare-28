@@ -22,9 +22,18 @@ bool Game::running() const {
 void Game::start() {
   entities_->destroy_all();
 
-  player_ = entity_factory_.create_player();
-
   dungeon_.generate(1, 100, 100);
+
+  player_ = entity_factory_.create_player();
+  bool player_placed = false;
+  while (player_placed == false) {
+    int pos_x = rand_range(0, 100 - 1);
+    int pos_y = rand_range(0, 100 - 1);
+    if (dungeon_.tile_at(pos_x, pos_y)->passable() == true) {
+      player_.component<Spatial>()->set_position(pos_x, pos_y);
+      player_placed = true;
+    }
+  }
 
   for (int i = 0; i < 50; ++i) {
     bool goblin_placed = false;

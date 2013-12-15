@@ -70,7 +70,11 @@ bool PlayingController::handle_event(const tb_event &event) {
 void PlayingController::on_enter_() {
   game_->start();
 
+  auto player = game_->player();
+
   game_view_ = new GameView(0, 0, 50, 20, game_);
+  game_view_->set_center(player.component<Spatial>()->x(),
+                         player.component<Spatial>()->y());
   views_.push_back(game_view_);
 
   hud_view_ = new HUDView(50, 0, 30, 20, game_);
