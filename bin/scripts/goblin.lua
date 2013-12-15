@@ -10,13 +10,14 @@ move_directions[7] = { action=action.move_southeast, x=1, y=1 }
 
 function think()
     local turn_taken = false
-    local direction
+    local direction = nil
 
-    while turn_taken == false do
+    while (turn_taken == false) do
         direction = move_directions[math.random(0, 7)]
         local new_x = spatial:x() + direction.x
         local new_y = spatial:y() + direction.y
-        if dungeon:tile_at(new_x, new_y):passable() == true then
+        local tile = dungeon:tile_at(new_x, new_y)
+        if (tile ~= nil and tile:passable() == true) then
             turn_taken = true
         end
     end

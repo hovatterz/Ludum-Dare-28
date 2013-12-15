@@ -45,8 +45,11 @@ void GameView::render() {
 
   for (auto entity : game_->entities()->entities_with_components<Aspect, Spatial>()) {
     auto spatial = entity.component<Spatial>();
-    auto aspect = entity.component<Aspect>();
-    tb_change_cell(spatial->x() - low_x, spatial->y() - low_y,
-                   aspect->symbol(), aspect->foreground(), aspect->background());
+    if (spatial->x() >= low_x && spatial->y() >= low_y &&
+        spatial->x() < high_x && spatial->y() < high_y) {
+      auto aspect = entity.component<Aspect>();
+      tb_change_cell(spatial->x() - low_x, spatial->y() - low_y,
+                     aspect->symbol(), aspect->foreground(), aspect->background());
+    }
   }
 }
