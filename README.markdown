@@ -20,6 +20,7 @@ This game requires a few libraries to build.
 
 - [entityx](https://github.com/alecthomas/entityx)
 - [termbox](https://github.com/nsf/termbox)
+- [lua 5.2](http://www.lua.org/)
 
 After they are installed, you should just be able to run `make`. The game
 builds to the `bin` directory. It relies on C++11 features.
