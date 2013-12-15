@@ -2,6 +2,7 @@
 
 #include "controller_stack.h"
 #include "main_menu_controller.h"
+#include "script.h"
 #include "spatial.h"
 #include "turn_taker.h"
 
@@ -31,37 +32,12 @@ void PlayingController::update() {
 
 bool PlayingController::handle_event(const tb_event &event) {
   char input = static_cast<char>(event.ch);
-  auto turn_taker = game_->player().component<TurnTaker>();
 
   if (input == 'q') {
     game_->quit();
-  } else if (input == 'h') {
-    turn_taker->set_action(kActionMoveWest);
-    waiting_for_player_ = false;
-  } else if (input == 'j') {
-    turn_taker->set_action(kActionMoveSouth);
-    waiting_for_player_ = false;
-  } else if (input == 'k') {
-    turn_taker->set_action(kActionMoveNorth);
-    waiting_for_player_ = false;
-  } else if (input == 'l') {
-    turn_taker->set_action(kActionMoveEast);
-    waiting_for_player_ = false;
-  } else if (input == 'y') {
-    turn_taker->set_action(kActionMoveNorthwest);
-    waiting_for_player_ = false;
-  } else if (input == 'u') {
-    turn_taker->set_action(kActionMoveNortheast);
-    waiting_for_player_ = false;
-  } else if (input == 'b') {
-    turn_taker->set_action(kActionMoveSouthwest);
-    waiting_for_player_ = false;
-  } else if (input == 'n') {
-    turn_taker->set_action(kActionMoveSoutheast);
-    waiting_for_player_ = false;
-  } else if (input == '.') {
-    turn_taker->set_action(kActionNone);
-    waiting_for_player_ = false;
+  } else {
+    auto script = game_->player().component<Script>();
+    waiting_for_player_ = !script->handle_input(input);
   }
 
   return false;

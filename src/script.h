@@ -20,6 +20,7 @@ class Script : public entityx::Component<Script> {
   static entityx::ptr<Script> make(const std::string &file_path);
 
   void initialize(entityx::Entity self, Dungeon *dungeon);
+  bool handle_input(char input);
   void think();
 
  private:

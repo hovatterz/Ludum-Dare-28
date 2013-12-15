@@ -17,6 +17,28 @@ extern void dungeon_push(lua_State *L, const char *name, Dungeon *dungeon);
 extern void spatial_push(lua_State *L, const char *name, Spatial *spatial);
 extern void turn_taker_push(lua_State *L, const char *name, TurnTaker *turn_taker);
 
+static bool lua_script_handle_input(lua_State *L, char input) {
+  lua_getglobal(L, "handle_input");
+
+  std::string input_str;
+  input_str.push_back(input);
+  lua_pushstring(L, input_str.c_str());
+
+  if (lua_pcall(L, 1, 1, 0) != 0) {
+    std::cerr << "Error running function 'handle_input': " << lua_tostring(L, -1) << std::endl;
+    return false;
+  }
+
+  if (lua_isboolean(L, -1) == false) {
+    std::cerr << "Lua function 'handle_input' did not return boolean" << std::endl;
+    return false;
+  }
+
+  bool result = lua_toboolean(L, -1);
+  lua_pop(L, 1);
+  return result;
+}
+
 static void lua_script_think(lua_State *L) {
   lua_getglobal(L, "think");
   if (lua_pcall(L, 0, 0, 0) != 0) {
@@ -49,6 +71,10 @@ void Script::initialize(entityx::Entity self, Dungeon *dungeon) {
     std::cerr << "Error running script '" << file_path_ <<
         "': " << lua_tostring(lua_, -1) << std::endl;
   }
+}
+
+bool Script::handle_input(char input) {
+  return lua_script_handle_input(lua_, input);
 }
 
 void Script::think() {

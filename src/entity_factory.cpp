@@ -16,6 +16,7 @@ entityx::Entity EntityFactory::create_player() {
   entityx::Entity player = entities_->create();
   player.assign<Aspect>(Aspect::make('@', TB_WHITE | TB_BOLD, TB_BLACK));
   player.assign<Spatial>(Spatial::make());
+  player.assign<Script>(Script::make("scripts/player.lua"));
   player.assign<TurnTaker>(TurnTaker::make());
   player.assign<Health>(Health::make(Dice(1, 8)));
   player.assign<FactionMember>(FactionMember::make(kFactionPlayer));
