@@ -11,7 +11,9 @@ class Game {
   Game();
 
   bool running() const;
+  bool playing() const;
   void start();
+  void step();
   void quit();
 
   Dungeon *dungeon();
@@ -23,6 +25,7 @@ class Game {
   entityx::ptr<entityx::SystemManager> systems();
 
  private:
+  bool playing_;
   bool running_;
 
   entityx::ptr<entityx::EventManager> events_;

@@ -3,8 +3,6 @@
 
 #include <cstdlib>
 
-int rand_range(int min, int max) {
-  return min + (std::rand() % (max - min + 1));
-}
+int rand_range(int min, int max);
 
 #endif  // LD28_RNG_H_

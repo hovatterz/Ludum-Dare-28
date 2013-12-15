@@ -53,18 +53,21 @@ void Tile::set_type(TileType type) {
       symbol_ = '?';
       foreground_ = TB_WHITE;
       background_ = TB_BLACK;
+      passable_ = false;
       break;
 
     case kTileFloor:
       symbol_ = '.';
       foreground_ = TB_WHITE;
       background_ = TB_BLACK;
+      passable_ = true;
       break;
 
     case kTileWall:
       symbol_ = '#';
       foreground_ = TB_YELLOW;
       background_ = TB_BLACK;
+      passable_ = false;
       break;
   }
 }

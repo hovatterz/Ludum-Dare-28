@@ -1,5 +1,7 @@
+#include <chrono>
 #include <iostream>
 #include <list>
+#include <thread>
 
 #include <entityx/entityx.h>
 #include <termbox.h>
@@ -45,11 +47,15 @@ int main() {
       }
     }
 
+    game.step();
+
     tb_clear();
     for (auto controller : controllers) {
       controller->display();
     }
     tb_present();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
   }
 
   tb_shutdown();

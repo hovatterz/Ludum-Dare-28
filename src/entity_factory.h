@@ -9,6 +9,7 @@ class EntityFactory {
   EntityFactory(entityx::ptr<entityx::EntityManager> entities);
 
   entityx::Entity create_player();
+  entityx::Entity create_goblin();
 
  private:
   entityx::ptr<entityx::EntityManager> entities_;
