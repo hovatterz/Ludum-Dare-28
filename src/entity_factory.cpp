@@ -1,4 +1,5 @@
 #include "aspect.h"
+#include "health.h"
 #include "script.h"
 #include "spatial.h"
 #include "turn_taker.h"
@@ -14,6 +15,7 @@ entityx::Entity EntityFactory::create_player() {
   player.assign<Aspect>(Aspect::make('@', TB_WHITE | TB_BOLD, TB_BLACK));
   player.assign<Spatial>(Spatial::make());
   player.assign<TurnTaker>(TurnTaker::make());
+  player.assign<Health>(Health::make());
   return player;
 }
 
@@ -23,5 +25,6 @@ entityx::Entity EntityFactory::create_goblin() {
   goblin.assign<Spatial>(Spatial::make());
   goblin.assign<Script>(Script::make("scripts/goblin.lua"));
   goblin.assign<TurnTaker>(TurnTaker::make());
+  goblin.assign<Health>(Health::make());
   return goblin;
 }

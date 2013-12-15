@@ -2,6 +2,7 @@
 #define LD28_ENTITY_FACTORY_H_
 
 #include <string>
+
 #include <entityx/entityx.h>
 
 class EntityFactory {
