@@ -4,17 +4,18 @@
 #include <string>
 #include <vector>
 
+#include "announcements_receiver.h"
 #include "view.h"
 
 class AnnouncementsView : public View {
  public:
-  AnnouncementsView(int x, int y, int width, int height);
+  AnnouncementsView(int x, int y, int width, int height,
+                    AnnouncementsReceiver *receiver);
 
-  void add_announcement(const std::string &string);
   void render();
 
  private:
-  std::vector<std::string> announcements_;
+  AnnouncementsReceiver *receiver_;
 };
 
 #endif  // LD28_ANNOUNCEMENTS_VIEW_H_

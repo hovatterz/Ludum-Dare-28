@@ -69,7 +69,9 @@ void PlayingController::on_enter_() {
   hud_view_ = new HUDView(50, 0, 30, 20, game_);
   views_.push_back(hud_view_);
 
-  announcements_view_ = new AnnouncementsView(0, 20, 80, 4);
-  announcements_view_->add_announcement("Welcome to LD28 'You Only Get One' Roguelike");
+  announcements_receiver_.configure(game_->events());
+  announcements_receiver_.add_announcement("Welcome to LD28 'You Only Get One' Roguelike");
+
+  announcements_view_ = new AnnouncementsView(0, 20, 80, 4, &announcements_receiver_);
   views_.push_back(announcements_view_);
 }
