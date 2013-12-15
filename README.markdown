@@ -12,6 +12,7 @@ compo.
 | j   | move south  |
 | h   | move west   |
 | l   | move east   |
+| .   | skip turn   |
 
 Menus are controlled by the hjkl direction keys as well.
 

@@ -30,23 +30,33 @@ bool PlayingController::handle_event(const tb_event &event) {
     game_->quit();
   } else if (input == 'h') {
     turn_taker->set_action(kActionMoveWest);
+    waiting_for_player_ = false;
   } else if (input == 'j') {
     turn_taker->set_action(kActionMoveSouth);
+    waiting_for_player_ = false;
   } else if (input == 'k') {
     turn_taker->set_action(kActionMoveNorth);
+    waiting_for_player_ = false;
   } else if (input == 'l') {
     turn_taker->set_action(kActionMoveEast);
+    waiting_for_player_ = false;
   } else if (input == 'y') {
     turn_taker->set_action(kActionMoveNorthwest);
+    waiting_for_player_ = false;
   } else if (input == 'u') {
     turn_taker->set_action(kActionMoveNortheast);
+    waiting_for_player_ = false;
   } else if (input == 'b') {
     turn_taker->set_action(kActionMoveSouthwest);
+    waiting_for_player_ = false;
   } else if (input == 'n') {
     turn_taker->set_action(kActionMoveSoutheast);
+    waiting_for_player_ = false;
+  } else if (input == '.') {
+    turn_taker->set_action(kActionNone);
+    waiting_for_player_ = false;
   }
 
-  waiting_for_player_ = false;
   return false;
 }
 
