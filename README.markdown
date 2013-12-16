@@ -4,6 +4,22 @@ The theme for this entry is "You Only Get One". I decided to make a
 roguelike since you only get one life. This project was for the 48 hour
 compo.
 
+
+## Postmortem
+
+I was not able to complete the project as I had planned it out due to work
+obligations. All in all I still call it a success since I came up with a
+few ideas for my primary project.
+
+### Missing Features
+
+- Items, inventory, and equipment
+- More enemy types
+- Pathfinding for enemies to chase the player
+- Proper dungeon generation
+
+
+
 ## Controls
 
 | Key | Action      |
